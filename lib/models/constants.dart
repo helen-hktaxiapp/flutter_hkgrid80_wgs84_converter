@@ -7,17 +7,17 @@ const double m_0 = 1; // scale factor
 const double lat_0 = (22 + 18/60 + 43.68/3600) * pi / 180; // DMS to radian, lat of projection origin
 const double lng_0 = (114 + 10/60 + 42.80/3600) * pi / 180; // DMS to decimal, lng of projection origin
 
-double M_0; // meridian distance measured from equator to origin
-double a;
-double f;
-double e_squared; // first eccentricity of reference ellipsoid
-double e_quad;
-double A_0;
-double A_2;
-double A_4;
-double v_s; // radius of curvature in the prime vertical
-double p_s; // radius of curvature in the meridian
-double psi_s; // isometric latitude
+late double M_0; // meridian distance measured from equator to origin
+late double a;
+late double f;
+late double e_squared; // first eccentricity of reference ellipsoid
+late double e_quad;
+late double A_0;
+late double A_2;
+late double A_4;
+late double v_s; // radius of curvature in the prime vertical
+late double p_s; // radius of curvature in the meridian
+late double psi_s; // isometric latitude
 
 enum system {grid, wgs}
 
@@ -53,7 +53,7 @@ class Constants {
   static getPhiP(N) {
     double deltaN = N - N_0;
     double c = (deltaN + M_0) / m_0;
-    double error = pow(10,-17);
+    double error = pow(10,-17) as double;
     double err = 1; // initialize
     double x0 = 0.3;
     // double x1 = 0.4;
@@ -101,8 +101,8 @@ class Constants {
     double rollP = getRoll(phiP);
     double psiP = vP / rollP;
     double tanP = tan(phiP);
-    double deltaE = x - E_0;
-    double deltaN = y - N_0;
+    double? deltaE = x - E_0;
+    double? deltaN = y - N_0;
     constants['phiP'] = phiP;
     constants['secantPhiP'] = secantPhiP;
     constants['vP'] = vP;

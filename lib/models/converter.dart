@@ -9,7 +9,7 @@ class Conversion {
       - constants['secantPhiP'] * (pow(constants['deltaE'],3) * (constants['psiP']+2*pow(constants['tanP'],2)) / (6*pow(m_0*constants['vP'],3)) );
   }
 
-  double yToLat(Map constants) {
+  double? yToLat(Map constants) {
     return constants['phiP'] - constants['tanP'] * pow(constants['deltaE'],2) / (m_0 * constants['rollP'] * 2 * m_0 * constants['vP']);
   }
 
@@ -28,7 +28,7 @@ class Conversion {
   Coordinate gridToLatLng(Coordinate coordinate) {
     assert(coordinate.x != null && coordinate.y != null);
     var constants = Constants.getAllConstants(coordinate.x, coordinate.y, system.grid);     // [phiP, vP, rollP, psiP, tanP, deltaE, deltaN]
-    double lat = yToLat(constants);
+    double lat = yToLat(constants)!;
     double lng = xToLng(constants);
     return Coordinate(
       lat: lat*180/pi - 5.5/3600,
@@ -39,8 +39,8 @@ class Conversion {
   Coordinate latLngToGrid(Coordinate coordinate) {
     assert(coordinate.lat != null && coordinate.lng != null);
     Constants.initAllConstants(system.wgs);
-    double lat = coordinate.lat + 5.5/3600;
-    double lng = coordinate.lng - 8.8/3600;
+    double lat = coordinate.lat! + 5.5/3600;
+    double lng = coordinate.lng! - 8.8/3600;
     double x = lngToX(lat,lng);
     double y = latToY(lat,lng);
     return Coordinate(

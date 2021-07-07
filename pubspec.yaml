@@ -1,11 +1,10 @@
 name: flutter_hkgrid80_wgs84_converter
 description: A new Flutter package project.
-version: 0.0.1
-author:
+version: 0.0.2-nullsafety.0
 homepage:
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
